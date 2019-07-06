@@ -18,9 +18,10 @@ mongoose
 
 /* GET home page. */
 app.get('/', (req,res) => res.json({
-	msg: "Hello! Amigo"
+	msg: "Hello! Amingo"
 }));
 
+// for posting data to database
 app.post('/users', (req, res) => {
 
     const newUser = new User (({
@@ -29,14 +30,14 @@ app.post('/users', (req, res) => {
         password: req.body.password
     }))
 
-newUser // posting data 
+newUser // For adding new data to database
 .save()
 .then (user => res.json(user))
 .catch(err => console.log(err))
 
 });
 
-// get data
+// for getting data from database
 app.get('/users', (req, res) => {
     User.find()
     .then(users => res.json(users))
